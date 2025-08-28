@@ -28,9 +28,13 @@ def list_templates() -> None:
     Lists all available templates, with a truncated preview of template string
     """
     db = DB()
+    truncate = 100
     for template in db.get_all():
         id, templ = template.display()
-        print(f"{id}: [italic]{templ:t100}[/italic]...")
+        if len(templ) > truncate:
+            print(f"{id}: [italic]{templ:.truncate}[/italic]...")
+        else:
+            print(f"{id}: [italic]{templ}[/italic]")
 
 
 def show_template(identifer: str) -> None:

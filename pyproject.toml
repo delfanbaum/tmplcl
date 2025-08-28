@@ -16,7 +16,7 @@ dependencies = [
 
 [project.scripts]
 tmplcl = "tmplcl:main"
-tcl = "tmplcl.commands:copy_template"
+tcl = "tmplcl:copy"
 
 [build-system]
 requires = ["uv_build>=0.8.12,<0.9.0"]
