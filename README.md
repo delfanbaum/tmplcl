@@ -29,10 +29,42 @@ The usage for each is as follows:
 
 ```console
 uv run tmplcl --help
+                                                                           
+ Usage: tmplcl [OPTIONS] COMMAND [ARGS]...                                 
+                                                                           
+╭─ Options ───────────────────────────────────────────────────────────────╮
+│ --install-completion          Install completion for the current shell. │
+│ --show-completion             Show completion for the current shell, to │
+│                               copy it or customize the installation.    │
+│ --help                        Show this message and exit.               │
+╰─────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ──────────────────────────────────────────────────────────────╮
+│ copy     Copies the requested template to your clipboard                │
+│ delete   Deletes the template with the provided identifier              │
+│ add      Adds a template with the provided identifier and string        │
+│ list     Lists all available templates, including a preview of each     │
+│ show     Displays the full text of a given template                     │
+│ update   Updates a given template with a new string                     │
+╰─────────────────────────────────────────────────────────────────────────╯
+
 ```
 
 ```console
 uv run tcl --help
+                                                                           
+ Usage: tcl [OPTIONS] IDENTIFIER                                           
+                                                                           
+ Finds a template by its id and copies the resultant string to the         
+ clipboard                                                                 
+                                                                           
+                                                                           
+╭─ Arguments ─────────────────────────────────────────────────────────────╮
+│ *    identifier      TEXT  [default: None] [required]                   │
+╰─────────────────────────────────────────────────────────────────────────╯
+╭─ Options ───────────────────────────────────────────────────────────────╮
+│ --help          Show this message and exit.                             │
+╰─────────────────────────────────────────────────────────────────────────╯
+
 ```
 
 ## Data Storage
@@ -42,7 +74,37 @@ Specification](https://specifications.freedesktop.org/basedir-spec/latest/),
 data will stored in `$XDG_DATA_HOME/tmplcl`. 
 
 If you would like to define your templates manually, it's all just JSON, so open
-up `$XDG_DATA_HOME/tmplcl/templates.json` and have at it. The schema is roughly
+up `$XDG_DATA_HOME/tmplcl/data.json` and have at it. The schema is roughly
 as follows:
 
-(TBD)
+```json
+{
+  "description": "The model for the templates copied over to the clipboard. Contains the\ntemplate identifier as well as the template string.\n\nNote that the id may contain only alphanumeric characters or `-` and `_`",
+  "properties": {
+    "identifier": {
+      "minLength": 1,
+      "pattern": "^[a-zA-Z0-9_-]+$",
+      "title": "Identifier",
+      "type": "string"
+    },
+    "template": {
+      "minLength": 1,
+      "title": "Template",
+      "type": "string"
+    }
+  },
+  "required": [
+    "identifier",
+    "template"
+  ],
+  "title": "Template",
+  "type": "object"
+}
+```
+
+## The Future
+
+Eventually, the goal is to support these "templates" as actual... templates.
+Like, being able to run `tcl my_template foo` where `my_template` is `"My
+favorite food is {}` and `"My favorite food is foo"` gets put on your clipboard.
+But that'll be a 0.1.2 thing.
