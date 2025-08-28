@@ -3,10 +3,10 @@
 Templates to your clipboard: because sometimes you *just* can't be bothered to
 type it again. While this utility was created as an exercise to relearn `typer`
 (which is great, though really all CLI tools should be "rewritten in Rust") and
-a few other tools, but hopefully it's at least of some use to some folks.
-Eventually, the idea is to also leverage [template
-strings](https://peps.python.org/pep-0750/) once those become available, because
-really that is a great idea.
+a few other tools (and whack this out as quickly as possible), but hopefully
+it's at least of some use to some folks. Eventually, the idea is to also
+leverage [template strings](https://peps.python.org/pep-0750/) once those become
+available, because really that is a great idea.
 
 ## Installation
 
