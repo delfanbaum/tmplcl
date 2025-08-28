@@ -52,7 +52,7 @@ class DB:
     Convenience interface from the json "database" to Templates and back
     """
 
-    data_dir: Path = xdg_data_home() / "templcl"
+    data_dir: Path = xdg_data_home() / "tmplcl"
     db: TinyDB
 
     def __init__(self, data_dir: Optional[Path] = None):

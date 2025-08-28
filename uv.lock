@@ -270,7 +270,7 @@ wheels = [
 ]
 
 [[package]]
-name = "templcl"
+name = "tmplcl"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

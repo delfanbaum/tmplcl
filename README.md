@@ -14,21 +14,21 @@ The recommended installation path is via the `uv tool` interface, installing via
 (for now, until it's stable enough to put on `pypi`):
 
 ```sh
-uv tool install  git+https://github.com/delfanbaum/templcl
+uv tool install  git+https://github.com/delfanbaum/tmplcl
 ```
 
 ## Usage
 
-This package provides two executable commands: `templcl` and `tcl`. `templcl` is
+This package provides two executable commands: `tmplcl` and `tcl`. `tmplcl` is
 the "app" version of the tool, allowing you to perform all the expected CRUD
 tasks such as creating, listing, deleting, and updating your various templates.
-`tcl` is essentially just a shortcut for `templcl copy TEMPLATE_ID`, because who
+`tcl` is essentially just a shortcut for `tmplcl copy TEMPLATE_ID`, because who
 wants to do all that typing.
 
 The usage for each is as follows:
 
 ```console
-uv run templcl --help
+uv run tmplcl --help
 ```
 
 ```console
@@ -39,10 +39,10 @@ uv run tcl --help
 
 Following the [XDG Base Directory
 Specification](https://specifications.freedesktop.org/basedir-spec/latest/),
-data will stored in `$XDG_DATA_HOME/templcl`. 
+data will stored in `$XDG_DATA_HOME/tmplcl`. 
 
 If you would like to define your templates manually, it's all just JSON, so open
-up `$XDG_DATA_HOME/templcl/templates.json` and have at it. The schema is roughly
+up `$XDG_DATA_HOME/tmplcl/templates.json` and have at it. The schema is roughly
 as follows:
 
 (TBD)

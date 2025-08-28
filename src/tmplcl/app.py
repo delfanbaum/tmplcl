@@ -1,6 +1,6 @@
 import typer
 
-from templcl.commands import (
+from tmplcl.commands import (
     add_template,
     copy_template,
     delete_template,

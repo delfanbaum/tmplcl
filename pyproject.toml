@@ -1,5 +1,5 @@
 [project]
-name = "templcl"
+name = "tmplcl"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -15,8 +15,8 @@ dependencies = [
 ]
 
 [project.scripts]
-templcl = "templcl:main"
-tcl = "templcl.commands:copy_template"
+tmplcl = "tmplcl:main"
+tcl = "tmplcl.commands:copy_template"
 
 [build-system]
 requires = ["uv_build>=0.8.12,<0.9.0"]

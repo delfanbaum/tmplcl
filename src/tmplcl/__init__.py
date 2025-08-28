@@ -1,4 +1,4 @@
-from templcl.app import app
+from tmplcl.app import app
 
 
 def main():

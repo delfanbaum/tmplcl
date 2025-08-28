@@ -1,7 +1,7 @@
 import pyperclip
 from rich import print
 
-from templcl.model import DB, Template
+from tmplcl.model import DB, Template
 
 
 # CREATE
