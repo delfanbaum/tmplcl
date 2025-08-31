@@ -102,6 +102,11 @@ as follows:
 }
 ```
 
+
+## Development
+
+To get started, run `uv sync`.
+
 ## The Future
 
 Eventually, the goal is to support these "templates" as actual... templates.

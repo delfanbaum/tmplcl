@@ -5,30 +5,27 @@ from tmplcl.model import DB, Template
 
 
 # CREATE
-def add_template(identifier: str, template_str: str) -> None:
+def add_template(identifier: str, template_str: str, db: DB) -> None:
     """
     Adds a new template to the database
     """
-    db = DB()
     db.insert(Template(identifier=identifier, template=template_str))
 
 
 # READ
-def copy_template(identifier: str) -> None:
+def copy_template(identifier: str, db: DB) -> None:
     """
     Finds a template by its id and copies the resultant string to the clipboard
     """
-    db = DB()
     template, _ = db.get(identifier)
     pyperclip.copy(template.template)
 
 
-def list_templates() -> None:
+def list_templates(db: DB) -> None:
     """
     Lists all available templates, with a truncated preview of template string
     """
-    db = DB()
-    truncate = 100
+    truncate = 100  # maybe this becomes configurable someday
     for template in db.get_all():
         id, templ = template.display()
         if len(templ) > truncate:
@@ -37,29 +34,26 @@ def list_templates() -> None:
             print(f"{id}: [italic]{templ}[/italic]")
 
 
-def show_template(identifer: str) -> None:
+def show_template(identifer: str, db: DB) -> None:
     """
     Shows the full "template" for a given identifier, formatted to highlight any
     internal template string options
     """
-    db = DB()
     template, _ = db.get(identifer)
     print(f"{template.display()[1]}")
 
 
 # UPDATE
-def update_template(identifier: str, template_str) -> None:
+def update_template(identifier: str, template_str: str, db: DB) -> None:
     """
     Updates a given template id with a new template string
     """
-    db = DB()
     db.update(identifier, template_str)
 
 
 # DESTROY
-def delete_template(identifier: str) -> None:
+def delete_template(identifier: str, db: DB) -> None:
     """
     Finds a template by its id and deletes it from the database
     """
-    db = DB()
     db.delete(identifier)
