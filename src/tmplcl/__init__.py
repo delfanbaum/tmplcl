@@ -4,13 +4,14 @@ from tmplcl.app import app
 from tmplcl.commands import copy_template
 
 
-def main():
+def main():  # pragma: nocover
     """
     Passthrough to run the app
     """
     app()
 
-def copy():
+
+def copy():  # pragma: nocover
     """
     Passthrough to run just the copy command for convenience
     """

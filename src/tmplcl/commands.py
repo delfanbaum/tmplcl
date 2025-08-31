@@ -4,7 +4,7 @@ import pyperclip
 from rich import print
 from typing_extensions import Annotated
 
-from tmplcl.models import DB, CorruptedTemplate, Template, TemplateNotFound
+from tmplcl.models import DB, Template
 from tmplcl.utils import SKIP_OPTION
 
 
@@ -26,23 +26,8 @@ def copy_template(
     if not db:
         db = DB()
 
-    try:
-        template, _ = db.get(identifier)
-        pyperclip.copy(template.template)
-    except TemplateNotFound:
-        print(
-            "[red bold]Error[/red bold]: Unable to find the requested "
-            f"template [magenta bold]{identifier}[/magenta bold] in "
-            "the database."
-        )
-
-    except CorruptedTemplate:
-        print(
-            "[red bold]Error[/red bold]: The requested template "
-            f"([bold]{identifier}[/bold]) appears to have been corrupted."
-            f"Please either remove or fix the entry in [italic]{db.data_dir}"
-            "/data.json[/italic]."
-        )
+    template, _ = db.get(identifier)
+    pyperclip.copy(template.template)
 
 
 def list_templates(db: DB, truncate: int = 50) -> None:

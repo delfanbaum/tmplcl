@@ -85,12 +85,10 @@ class DB:
 
     def update(self, identifier: str, template_str: str):
         template, id = self.get(identifier)
-        if template and id:
-            template.template = template_str
-            self.db.update(template.model_dump(), doc_ids=[id])
-
-        else:
-            raise TemplateNotFound
+        updated = Template(
+            identifier=template.identifier, template=template_str
+        )
+        self.db.update(updated.model_dump(), doc_ids=[id])
 
     def delete(self, identifier):
         self.db.remove(Query().identifier == identifier)

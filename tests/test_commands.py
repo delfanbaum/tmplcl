@@ -1,4 +1,5 @@
 import pyperclip
+import pytest
 
 from tmplcl.commands import (
     add_template,
@@ -8,6 +9,7 @@ from tmplcl.commands import (
     show_template,
     update_template,
 )
+from tmplcl.models import TemplateNotFound
 
 
 class TestCommands:
@@ -33,6 +35,17 @@ class TestCommands:
         """
         copy_template("foo", test_db)
         assert pyperclip.paste() == "bar"
+
+    def test_copy_no_db_gets_db(self):
+        """
+        Coverage test: if there is no db passed in, we get the default one; we
+        pass the DB in usually to make testing simple, but when `tcl` is called
+        directly, we need to find it due to some silly things about Typer
+
+        Here, we assert that the caught error is that we didn't find the command
+        """
+        with pytest.raises(TemplateNotFound):
+            copy_template("won_t_find_")
 
     def test_list_templates(self, test_db, capsys):
         """

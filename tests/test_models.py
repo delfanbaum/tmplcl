@@ -45,9 +45,9 @@ class TestDB:
         """
         Smoke test for initialization and access
         """
-        # make sure there are no collisions with our fixture
+        # make sure there are no collisions with our fixture, also provides
+        # coverage for the internal mkdir()
         data_dir = tmp_path / "testing"
-        data_dir.mkdir()
 
         db = DB(data_dir=data_dir)
 
@@ -63,12 +63,19 @@ class TestDB:
         with pytest.raises(DuplicateTemplateId):
             test_db.insert(test_tmpl)
 
-    def test_not_found(self, test_db):
+    def test_not_found_get(self, test_db):
         """
         Assure that we raise an error if we can't find a given template
         """
         with pytest.raises(TemplateNotFound):
             test_db.get("baz")
+
+    def test_not_found_update(self, test_db):
+        """
+        Assure that we raise an error if we can't find a given template
+        """
+        with pytest.raises(TemplateNotFound):
+            test_db.update("baz", "bar")
 
     def test_validation_error(self, test_db):
         """
