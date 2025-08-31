@@ -5,13 +5,14 @@ from tmplcl.commands import (
     copy_template,
     delete_template,
     list_templates,
+    show_template,
     update_template,
 )
 
 
 class TestCommands:
     """
-    Command API tests; note that error handling is tested on the model tests. 
+    Command API tests; note that error handling is tested on the model tests.
     """
 
     def test_add_template(self, test_db):
@@ -41,6 +42,16 @@ class TestCommands:
 
         assert "foo: bar" in capsys.readouterr().out
 
+    def test_list_templates_truncate(self, test_db, capsys):
+        """
+        Ensures that we can list our templates, truncating very long ones
+        """
+        long_string = "a" * 100
+        add_template("baz", long_string, test_db)
+        list_templates(test_db, truncate=10)
+
+        assert f"baz: {'a' * 10}...\n" in capsys.readouterr().out
+
     def test_update_template(self, test_db):
         """
         Ensures we can update a template (starts as "bar" in the DB)
@@ -55,3 +66,16 @@ class TestCommands:
         """
         delete_template("foo", test_db)
         assert not test_db.get_all()
+
+    def test_show_template(self, test_db, capsys):
+        """
+        Ensures that we can show the full template
+        """
+
+        long_string = "a" * 100
+        add_template("baz", long_string, test_db)
+
+        show_template("baz", test_db)
+
+        # do the replacement because of terminal wrapping
+        assert long_string in capsys.readouterr().out.replace("\n", "")

@@ -21,15 +21,14 @@ def copy_template(identifier: str, db: DB) -> None:
     pyperclip.copy(template.template)
 
 
-def list_templates(db: DB) -> None:
+def list_templates(db: DB, truncate: int = 50) -> None:
     """
     Lists all available templates, with a truncated preview of template string
     """
-    truncate = 100  # maybe this becomes configurable someday
     for template in db.get_all():
         id, templ = template.display()
         if len(templ) > truncate:
-            print(f"{id}: [italic]{templ:.truncate}[/italic]...")
+            print(f"{id}: [italic]{templ[:truncate]}[/italic]...")
         else:
             print(f"{id}: [italic]{templ}[/italic]")
 
