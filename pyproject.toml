@@ -1,11 +1,12 @@
 [project]
 name = "tmplcl"
-version = "0.1.0"
-description = "Add your description here"
+version = "0.1.1"
+description = "A utility for quickly copying a given string (template) to your clipboard"
 readme = "README.md"
 authors = [
     { name = "delfanbaum", email = "delfanbaum@oreilly.com" }
 ]
+keywords = ["CLI tools", "copy-to-clipboard"]
 requires-python = ">=3.13"
 dependencies = [
     "pydantic>=2.11.7",
