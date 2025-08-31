@@ -18,7 +18,7 @@ def add_template(identifier: str, template_str: str, db: DB) -> None:
 
 # READ
 def copy_template(
-    identifier: str, db: Annotated[Optional[DB], SKIP_OPTION] = None
+    template: str, db: Annotated[Optional[DB], SKIP_OPTION] = None
 ) -> None:
     """
     Finds a template by its id and copies the resultant string to the clipboard
@@ -26,8 +26,8 @@ def copy_template(
     if not db:
         db = DB()
 
-    template, _ = db.get(identifier)
-    pyperclip.copy(template.template)
+    retrieved, _ = db.get(template)
+    pyperclip.copy(retrieved.template)
 
 
 def list_templates(db: DB, truncate: int = 50) -> None:

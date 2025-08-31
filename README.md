@@ -1,4 +1,4 @@
-# Template to Clipboard
+# A Template to Clipboard Utility
 
 Templates to your clipboard: because sometimes you *just* can't be bothered to
 type it again. While this utility was created as an exercise to relearn `typer`
@@ -11,10 +11,14 @@ available, because really that is a great idea.
 ## Installation
 
 The recommended installation path is via the `uv tool` interface, installing via
-(for now, until it's stable enough to put on `pypi`):
+the GH link or PyPI, as you please:
 
 ```sh
-uv tool install  git+https://github.com/delfanbaum/tmplcl
+uv tool install tmplcl
+```
+
+```sh
+uv tool install git+https://github.com/delfanbaum/tmplcl
 ```
 
 ## Usage
@@ -28,43 +32,40 @@ wants to do all that typing.
 The usage for each is as follows:
 
 ```console
-uv run tmplcl --help
-                                                                           
- Usage: tmplcl [OPTIONS] COMMAND [ARGS]...                                 
-                                                                           
-╭─ Options ───────────────────────────────────────────────────────────────╮
-│ --install-completion          Install completion for the current shell. │
-│ --show-completion             Show completion for the current shell, to │
-│                               copy it or customize the installation.    │
-│ --help                        Show this message and exit.               │
-╰─────────────────────────────────────────────────────────────────────────╯
-╭─ Commands ──────────────────────────────────────────────────────────────╮
-│ copy     Copies the requested template to your clipboard                │
-│ delete   Deletes the template with the provided identifier              │
-│ add      Adds a template with the provided identifier and string        │
-│ list     Lists all available templates, including a preview of each     │
-│ show     Displays the full text of a given template                     │
-│ update   Updates a given template with a new string                     │
-╰─────────────────────────────────────────────────────────────────────────╯
-
+tmplcl --help
+                                                                              
+ Usage: tmplcl [OPTIONS] COMMAND [ARGS]...                                    
+                                                                              
+╭─ Options ──────────────────────────────────────────────────────────────────╮
+│ --install-completion          Install completion for the current shell.    │
+│ --show-completion             Show completion for the current shell, to    │
+│                               copy it or customize the installation.       │
+│ --help                        Show this message and exit.                  │
+╰────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ─────────────────────────────────────────────────────────────────╮
+│ copy     Copies the requested template to your clipboard                   │
+│ delete   Deletes the template with the provided identifier                 │
+│ add      Adds a template with the provided identifier and string           │
+│ list     Lists all available templates, including a preview of each        │
+│ show     Displays the full text of a given template                        │
+│ update   Updates a given template with a new string                        │
+╰────────────────────────────────────────────────────────────────────────────╯
 ```
 
 ```console
-uv run tcl --help
-                                                                           
- Usage: tcl [OPTIONS] IDENTIFIER                                           
-                                                                           
- Finds a template by its id and copies the resultant string to the         
- clipboard                                                                 
-                                                                           
-                                                                           
-╭─ Arguments ─────────────────────────────────────────────────────────────╮
-│ *    identifier      TEXT  [default: None] [required]                   │
-╰─────────────────────────────────────────────────────────────────────────╯
-╭─ Options ───────────────────────────────────────────────────────────────╮
-│ --help          Show this message and exit.                             │
-╰─────────────────────────────────────────────────────────────────────────╯
-
+tcl --help
+                                                                              
+ Usage: tcl [OPTIONS] TEMPLATE                                                
+                                                                              
+ Finds a template by its id and copies the resultant string to the clipboard  
+                                                                              
+                                                                              
+╭─ Arguments ────────────────────────────────────────────────────────────────╮
+│ *    template      TEXT  [default: None] [required]                        │
+╰────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ──────────────────────────────────────────────────────────────────╮
+│ --help          Show this message and exit.                                │
+╰────────────────────────────────────────────────────────────────────────────╯
 ```
 
 ## Data Storage
