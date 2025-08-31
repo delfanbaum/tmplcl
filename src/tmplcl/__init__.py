@@ -1,4 +1,5 @@
 import typer
+
 from tmplcl.app import app
 from tmplcl.commands import copy_template
 

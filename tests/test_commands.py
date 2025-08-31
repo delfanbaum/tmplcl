@@ -11,7 +11,7 @@ from tmplcl.commands import (
 
 class TestCommands:
     """
-    Command API tests
+    Command API tests; note that error handling is tested on the model tests. 
     """
 
     def test_add_template(self, test_db):

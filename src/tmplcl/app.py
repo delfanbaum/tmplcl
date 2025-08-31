@@ -8,7 +8,7 @@ from tmplcl.commands import (
     show_template,
     update_template,
 )
-from tmplcl.model import DB
+from tmplcl.models import DB
 
 app = typer.Typer()
 db = DB()
